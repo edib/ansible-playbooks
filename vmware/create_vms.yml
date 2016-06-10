@@ -1,0 +1,44 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+  user: remote
+  
+  vars:
+    vcenter_hostname: '<vcenter>'
+    vcenter_user: '<vcenter_user>'
+    vcenter_pass: '<vcenter_password'
+    datacenter: '<datacenter_name'
+    esxi_host: '<esxi_host_name>'
+    notes: '<notes to be written on vm notes>'
+
+    tasks:
+    - vsphere_guest:
+        vcenter_hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        guest: "{{ inventory_hostname }}"
+        state: present
+        vm_extra_config:
+          notes: "{{ notes }}"
+        vm_disk:
+          disk1:
+            size_gb: "{{ disk }}"
+            type: thin
+            datastore: "{{ datastore }}"
+        vm_nic:
+          nic1:
+            type: vmxnet3
+            network: "{{ network }}"
+            network_type: standard
+        vm_hardware:
+          memory_mb: "{{ memory }}"
+          num_cpus: "{{ cpucount }}"
+          osid: "{{ osid }}"
+          scsi: paravirtual
+          vm_cdrom:
+            type: "iso"
+            iso_path: "{{iso_path}}"
+        esxi:
+          datacenter: "{{ datacenter }}"
+          hostname: "{{ esxi_host }}
