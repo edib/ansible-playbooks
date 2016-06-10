@@ -1,0 +1,37 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+  user: remote
+  sudo: true
+
+#  vars_prompt:
+#    - name: "vcenter_hostname"
+#      prompt: "Enter vcenter hostname"
+#      private: no
+#      default: "vcsa"
+#    - name: "vcenter_user"
+#      prompt: "Enter vcenter username"
+#      private: no
+#    - name: "vcenter_pass"
+#      prompt: "Enter vcenter password"
+#      private: yes
+#
+  vars:
+    vcenter_hostname: '<vcenter>'
+    vcenter_user: '<vcenter_user>'
+    vcenter_pass: '<vcenter_password'
+    datacenter: '<datacenter_name'
+    esxi_host: '<esxi_host_name>'
+    notes: '<notes to be written on vm notes>'
+
+  tasks:
+    - vsphere_guest:
+        vcenter_hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        guest: "{{ inventory_hostname }}"
+        state: absent
+        esxi:
+          datacenter: "{{ datacenter }}"
+          hostname: "{{ esxi_host }}"
