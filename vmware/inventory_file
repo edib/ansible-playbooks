@@ -1,0 +1,3 @@
+[web-vms]
+web[01:05] disk='<disk_size>' datastore='<datastore_name>' network='<portgroup_name>' memory='<memory_size>' 
+cpucount='<cpu_count>' osid='<guest_osid' iso_path='<iso_path_on_datastore'
