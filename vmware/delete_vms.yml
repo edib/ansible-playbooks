@@ -3,7 +3,6 @@
   gather_facts: false
   connection: local
   user: remote
-  sudo: true
 
 #  vars_prompt:
 #    - name: "vcenter_hostname"
