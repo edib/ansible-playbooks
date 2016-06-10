@@ -1,7 +1,7 @@
 # ansible-playbooks
 created/edited/improved ansible playbooks.
 
-Ubuntu 14.04 and 16.04 system referenced.
+Ubuntu 14.04 and 16.04 systems are referenced.
 
 ```
 # sudo pip install pysphere
