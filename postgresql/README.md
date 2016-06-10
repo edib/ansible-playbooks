@@ -14,7 +14,7 @@ postgres=# \passwd ansible
 #usage
 must be used with tags otherwise "bad" things happen.
 ```
-# ansible-playbook postgresql.yml --tags "delete"
+# ansible-playbook postgresql.yml --tags "create"
 ```
 
 Ask for more!
