@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+  - postgresql_db:
+      name: newDB
+      state: present
+      login_host: localhost
+      port: 5432
+      login_user: ansible
+      login_password: ansible
+    tags: create
+
+  - postgresql_db:
+      name: newDB
+      state: absent
+      login_host: localhost
+      port: 5432
+      login_user: ansible
+      login_password: ansible
+    tags: delete
