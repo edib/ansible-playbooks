@@ -42,7 +42,7 @@
         esxi:
           datacenter: "{{ datacenter }}"
           hostname: "{{ esxi_host }}
-      tags: create_cms
+      tags: create_vms
       
     - vsphere_guest:
         vcenter_hostname: "{{ vcenter_hostname }}"
@@ -53,4 +53,4 @@
         esxi:
           datacenter: "{{ datacenter }}"
           hostname: "{{ esxi_host }}"
-      tags: delete_cms
+      tags: delete_vms
