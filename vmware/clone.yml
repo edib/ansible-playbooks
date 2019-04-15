@@ -1,0 +1,38 @@
+---
+- hosts: localhost
+  vars:
+    vcenter_hostname: "change_me"
+    datacenter: "change_me"
+    template: "change_me"
+    network: "change_me"
+    folder: "change_me"
+  vars_prompt:
+  - name: "vcenter_username"
+    prompt: "username"
+    private: no
+  - name: "vcenter_password"
+    prompt: "password"
+    private: yes
+  - name: "vm_name"
+    prompt: "new vm name?"
+    private: no
+  tasks:
+  - name: clone vm
+    vmware_guest:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      validate_certs: no
+      datacenter: "{{ datacenter }}"
+      state: present
+      folder: "{{ folder }}"
+      template: "{{ template }}"
+      name: "{{ vm_name }}"
+      cluster: "{{ datacenter }}"
+      networks:
+        - name: "{{ network }}"
+          type: dhcp
+      wait_for_ip_address: True
+      customization:
+        hostname: "{{ vm_name }}"
+    delegate_to: localhost
